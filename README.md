@@ -8,16 +8,16 @@ I currently use [Tic80](https://tic80.com) and [Solar2D](https://solar2d.com/) t
 ---
 
 #### This is my list of programming languages that I use and/or want to learn.
-* [ x ] LUA  
-* [ x ] C  
-* [ - ] C++  
-* [ - ] C#  
-* [ - ] Python  
-* [ - ] JavaScript
+* [x] LUA  
+* [x] C  
+* [ ] C++  
+* [ ] C#  
+* [ ] Python  
+* [ ] JavaScript
 
 ---
 
-#### Follow me in my social media to see news about my projects.
+#### Follow me in my social media to see news about my projects:
 
 * [Facebook](https://facebook.com/duckafire)
 * [GitHub](https://github.com/duckafire)
