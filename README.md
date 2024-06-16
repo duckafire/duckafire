@@ -8,4 +8,4 @@
 * [ ] C#
 * [ ] Python
 
-* #### **Follow me** *here* and in [*Facebook*](https://facebook.com/duckafire).
+* #### [My site](#https://duckafire.github.io/nest)
