@@ -10,9 +10,16 @@ I am **DuckAfire**, a full stack developer that **LOVE** to learn and of open so
 
 <br>
 
+## Performance
+
+![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=duckafire&show_icons=true&theme=tokyonight&border_radius=20&hide=issues)
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=duckafire&layout=compact&theme=tokyonight&border_radius=20)
+
+<br>
+
 ## Known *technologies*
  
-![c](https://img.shields.io/badge/C-A8B9CC?logo=c&style=flat-square&logoColor=fff)
+![c](https://img.shields.io/badge/C-A8B9CC?logo=c&style=flat-square&logoColor=000)
 ![c++](https://img.shields.io/badge/C++-00599C?logo=c%2B%2B&style=flat-square&logoColor=fff)
 ![lua](https://img.shields.io/badge/Cua-2C2D72?logo=lua&style=flat-square&logoColor=fff)
 ![javascript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&style=flat-square&logoColor=000)
@@ -41,12 +48,5 @@ I am **DuckAfire**, a full stack developer that **LOVE** to learn and of open so
 
 ![xml](https://img.shields.io/badge/XML-005FAD?logo=XML&style=flat-square&logoColor=fff)
 ![json](https://img.shields.io/badge/JSON-000000?logo=json&style=flat-square&logoColor=fff)
-
-<br>
-
-## Performance
-
-![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=duckafire&show_icons=true&theme=tokyonight&border_radius=20&hide=issues)
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=duckafire&layout=compact&theme=tokyonight&border_radius=20)
 
 </div>
