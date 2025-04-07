@@ -1,4 +1,6 @@
+<a href="https://github.com/sponsors/duckafire" title="GitHub Sponsors">
 <img align="right" src="https://img.shields.io/badge/Buy%20me%20a%20coffee-E5DB2F?&logo=buy-me-a-coffee&style=flat-square&logoColor=000">
+</a>
 
 ![see my-website](https://img.shields.io/badge/See%20my%20website-DF112f?logo=fireship&style=flat-square&logoColor=fff)
 
