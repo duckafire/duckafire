@@ -29,7 +29,7 @@ I am **DuckAfire**, a full stack developer that **LOVE** to learn and of open so
 ![java](https://img.shields.io/badge/Java-000000?logo=openjdk&style=flat-square&logoColor=fff)
 
 ![git](https://img.shields.io/badge/Git-F05032?logo=git&style=flat-square&logoColor=fff)
-![neovim](https://img.shields.io/badge/NeoVim-57A143?logo=neovim&style=flat-square&logoColor=fff)
+![vim](https://img.shields.io/badge/Vim-019733?logo=vim&style=flat-square&logoColor=fff)
 ![make](https://img.shields.io/badge/Make-6D00CC?logo=make&style=flat-square&logoColor=fff)
 ![cmake](https://img.shields.io/badge/Cmake-064F8C?logo=cmake&style=flat-square&logoColor=fff)
 ![bash](https://img.shields.io/badge/Bash-5FA04E?logo=gnu%20bash&style=flat-square&logoColor=fff)
@@ -47,6 +47,7 @@ I am **DuckAfire**, a full stack developer that **LOVE** to learn and of open so
 ![html](https://img.shields.io/badge/HTML-E34F26?logo=htmx&style=flat-square&logoColor=fff)
 ![css](https://img.shields.io/badge/CSS-663399?logo=css&style=flat-square&logoColor=fff)
 ![markdown](https://img.shields.io/badge/Markdown-000000?logo=markdown&style=flat-square&logoColor=fff)
+![sass](https://img.shields.io/badge/Sass-CC6699?logo=sass&style=flat-square&logoColor=fff)
 
 ![xml](https://img.shields.io/badge/XML-005FAD?logo=XML&style=flat-square&logoColor=fff)
 ![json](https://img.shields.io/badge/JSON-000000?logo=json&style=flat-square&logoColor=fff)
