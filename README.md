@@ -2,19 +2,19 @@
 <img align="right" src="https://img.shields.io/badge/Buy%20me%20a%20coffee-E5DB2F?&logo=buy-me-a-coffee&style=flat-square&logoColor=000">
 </a>
 
-![see my-website](https://img.shields.io/badge/See%20my%20website-DF112f?logo=fireship&style=flat-square&logoColor=fff)
+[![see my-website](https://img.shields.io/badge/See%20my%20website-DF112f?logo=fireship&style=flat-square&logoColor=fff)](https://duckafire.github.io/nest)
 
 <div align="center">
 
 # **Hello world!**
 
-I am **DuckAfire**, a full stack developer that **LOVE** to learn and of open source projects :D
+I am **DuckAfire**, a full stack developer that **LOVE** to learn and open source projects :D
 
 <br>
 
 ## Performance
 
-![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=duckafire&show_icons=true&theme=tokyonight&border_radius=20&hide=issues)
+![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=duckafire&show_icons=true&theme=tokyonight&border_radius=20&hide=contribs)
 ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=duckafire&layout=compact&theme=tokyonight&border_radius=20)
 
 <br>
