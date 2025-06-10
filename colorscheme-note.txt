@@ -1,0 +1,3 @@
+v0.0.1
+
+qterminal: /usr/share/qtermwidget5/color-schemes/
