@@ -6,8 +6,8 @@ declare -ri TRUE=0
 declare -ri FALSE=1
 
 declare -r PROGRAM_PATH="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)"
-declare -r COLORSCHEME_DIR="${PROGRAM_PATH}/colorscheme"
-declare -r COLORSCHEME_SOURCE="./terminal-colorscheme.json"
+declare -r COLORSCHEME_DIR="${PROGRAM_PATH}/colorschemes"
+declare -r COLORSCHEME_SOURCE="./palette.json"
 
 test ! -d "$COLORSCHEME_DIR" && mkdir "$COLORSCHEME_DIR"
 
