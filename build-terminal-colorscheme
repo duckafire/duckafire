@@ -135,6 +135,9 @@ Color=${colors[7]}
 [Color7Intense]
 Color=${colors[15]}
 " > "$COLORSCHEME_DIR/da-qterminal.colorscheme"
+
+	# - rw- r-- r--
+	chmod 644 "$COLORSCHEME_DIR/da-qterminal.colorscheme"
 }
 
 qterminal
