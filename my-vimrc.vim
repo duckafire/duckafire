@@ -147,4 +147,22 @@ let &t_EI = "\<Esc>[2 q" " End Insert
 augroup MARKDOWN_LINE_LIMIT
 	autocmd!
 	autocmd BufRead,BufNewFile *.md setlocal colorcolumn=90
-augroup EOF
+	autocmd FileType markdown setlocal colorcolumn=90
+augroup END
+
+augroup STRING_AS_AN_INDEX
+	autocmd!
+	" strings between []:
+	" ['foo'] ["foo"]
+	autocmd BufRead,BufNewFile * call matchadd("SpecialChar", "\\v\\[\\s*\\zs(('[^']*')|(\"[^\"]*\"))\\ze\\s*\\]")
+augroup END
+
+augroup C_CUSTOM_TYPES
+	autocmd!
+	" identifiers after `struct` or `enum`:
+	" enum foo; struct foo;
+	" identifiers suffixed by `_t`:
+	" foo_t bar_t
+	autocmd BufRead,BufNewFile *.c,*.h,*.cpp,*.hpp,*.cc,*.cxx call matchadd("cType", '\v((struct|enum)\s+\zs\h\w*\ze|(\h\w*_t))')
+	autocmd FileType c,cpp call matchadd("cType", '\v((struct|enum)\s+\zs\h\w*\ze|(\h\w*_t))')
+augroup END
