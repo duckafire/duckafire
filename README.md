@@ -30,6 +30,7 @@ I am **DuckAfire**, a full stack developer that **LOVE** to learn and open sourc
 ![typescript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&style=for-the-badge&logoColor=fff)
 ![java](https://img.shields.io/badge/Java-000000?logo=openjdk&style=for-the-badge&logoColor=fff)
 ![python](https://img.shields.io/badge/Python-3776AB?logo=python&style=for-the-badge&logoColor=fff)
+![php](https://img.shields.io/badge/PHP-777BB4?logo=php&style=for-the-badge&logoColor=fff)
 
 [//]: # "manager tools, editting tools, compilation tools and execution tools"
 
