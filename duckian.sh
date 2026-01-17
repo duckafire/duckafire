@@ -300,3 +300,48 @@ amixer set Capture nocap
 
 
 ####################################################################################################
+
+
+purge_packages='feathernotes
+libreoffice-draw
+libreoffice-impress
+libreoffice-math
+xsane
+smplayer
+qmmp
+mpv
+hexchat
+meteo-qt
+synaptic
+nano
+cups'
+
+purge_conf='
+'"$HOME"'/.sane/xsane"
+'"$HOME"'/.config/smplayer"
+'"$HOME"'/.config/qmmp"
+'"$HOME"'/.cache/qmmp"
+'"$HOME"'/.config/mpv"
+'"$HOME"'/.config/hexchat"
+'"$HOME"'/.config/meteo-qt"
+'"$HOME"'/.local/share/nano"
+/root/.local/share/nano
+/usr/share/cups
+/etc/ufw/applications.d/cups
+/etc/init.d/cups
+/etc/pam.d/cups
+/etc/cups
+/var/cache/cups
+/var/log/cups
+/run/cups'
+
+apt purge -y $purge_packages
+rm -rf $purge_conf
+apt autoremove -y
+
+apt install $APT_CIF $install_packages
+
+unset purge_packages purge_conf install_packages
+
+
+####################################################################################################
