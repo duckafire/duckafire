@@ -150,8 +150,9 @@ are irreversible. Before execute this script, PLEASE:
 * Revise this script;
 * Do a backup of your OS;
 * Have a stable internet connect;
-* Have a ISO file to reinstall your OS (whether necessary); and,
-* Have sure of this process will not be interrupted (it can corrupt some things).
+* Have a ISO file to reinstall your OS (whether necessary);
+* Have sure of this process will not be interrupted (it can corrupt some things); and
+* Execute this using `sudo` (do not use `su` directly, because it will attribute file to Super User, instead your "main" user).
 
   This script "thinks" nothing changes was done in OS after its installation,
 because of this, it does not verify the existing of some "things". Please,
@@ -196,20 +197,8 @@ echo 'Please, DO NOT stop this process.
 
 set -u
 
-TRUE=1
-FALSE=0
-
-is_true()
-{
-	test $1 -eq $TRUE && return $TRUE
-	return $FALSE
-}
-
-is_false()
-{
-	test $1 -eq $FALSE && return $TRUE
-	return $FALSE
-}
+TRUE=0
+FALSE=1
 
 # Separated with spaces.
 SUPPORTED_VERSIONS="13"
@@ -224,7 +213,7 @@ USER_NAME="$(basename "$HOME")"
 NET_MAN_BLACK_LIST="/etc/NetworkManager/conf.d/docker-unmanaged.conf"
 
 # Common Installation Flags.
-APT_CIF="-y --no-install-recommends --no-install-suggets"
+APT_CIF="-y --no-install-recommends --no-install-suggests"
 
 # Directory to store Git repositories.
 REPO_DIR="$HOME/Downloads/repo"
@@ -234,7 +223,7 @@ MYBIN_DIR="$HOME/.mybin"
 
 clear_global_scope()
 {
-	unset TRUE FALSE is_true is_false SUPPORTED_VERSIONS GUARD_FILE USER_NAME NET_MAN_BLACK_LIST APT_CIF MYBIN_DIR DUCKIAN_BASHRC
+	unset TRUE FALSE SUPPORTED_VERSIONS GUARD_FILE USER_NAME NET_MAN_BLACK_LIST APT_CIF MYBIN_DIR
 }
 
 
@@ -255,7 +244,7 @@ inc_gerr()
 
 if [ "$(whoami)" != "root" ]
 then
-	echo "Run this script as Super User."
+	echo "Run this script using \`sudo\`."
 	inc_gerr
 fi
 
@@ -270,7 +259,7 @@ then
 		fi
 	done
 
-	if is_false $is_supported_version
+	if $is_supported_version -eq $FALSE
 	then
 		echo "Unsuppoted Debian version: \"$OS_VERSION\"."
 		echo "Expecting one of these: $SUPPORTED_VERSIONS."
@@ -295,9 +284,13 @@ then
 	inc_gerr
 fi
 
-clear_global_scope
-unset OS_RELEASE OS_VERSION OS_NAME is_supported_version guard_error inv_gerr
-test $guard_errors -eq 0 && exit $guard_errors
+unset OS_RELEASE OS_VERSION OS_NAME is_supported_version guard_errors
+
+if [ $guard_errors -ne 0 ]
+then
+	clear_global_scope
+	exit $guard_errors
+fi
 
 
 ####################################################################################################
@@ -315,7 +308,7 @@ apt update
 # Uncomplicated FireWall; good to common users;
 # using default configurations.
 apt install $APT_CIF ufw
-ufw enable
+ufw --force enable
 
 systemctl disable --now bluetooth
 
@@ -340,8 +333,7 @@ synaptic
 nano
 cups'
 
-purge_conf='
-'"$HOME"'/.sane/xsane"
+purge_conf=''"$HOME"'/.sane/xsane"
 '"$HOME"'/.config/smplayer"
 '"$HOME"'/.config/qmmp"
 '"$HOME"'/.cache/qmmp"
@@ -358,6 +350,21 @@ purge_conf='
 /var/cache/cups
 /var/log/cups
 /run/cups'
+
+install_packages='jq
+tree
+wget
+git
+vim
+docker.io
+docker-cli
+gcc
+g++
+make
+cmake
+gdb
+luajit
+openjdk-25-jdk'
 
 apt purge -y $purge_packages
 rm -rf $purge_conf
@@ -379,7 +386,7 @@ unmanaged-devices=interface-name:docker0;interface-name:br-*
 ' > "$NET_MAN_BLACK_LIST"
 
 # Apply black-list.
-systemclt reload NetworkManager
+systemctl reload NetworkManager
 
 
 ####################################################################################################
@@ -419,14 +426,14 @@ mkdir "$MYBIN_DIR"
 
 # CREATE ~/.bash_aliases
 echo '### START: duckian.sh
-BLUE_ON="sudo systemctl start bluetooth"
-BLUE_OFF="sudo systemctl stop bluetooth"
+alias BLUE_ON="sudo systemctl start bluetooth"
+alias BLUE_OFF="sudo systemctl stop bluetooth"
 
-DOCKER_ON="sudo systemctl start docker"
-DOCKER_OFF="sudo systemctl stop docker"
+alias DOCKER_ON="sudo systemctl start docker"
+alias DOCKER_OFF="sudo systemctl stop docker"
 
-MP_ON="amixer set Capture cap"
-MP_OFF="amixer set Capture nocap"
+alias MP_ON="amixer set Capture cap"
+alias MP_OFF="amixer set Capture nocap"
 ### END: duckian.sh
 ' > "$HOME/.bash_aliases"
 
@@ -441,10 +448,10 @@ test ! -d "$REPO_DIR" && mkdir --parents "$REPO_DIR"
 	if git clone "https://github.com/duckafire/duckafire" # gitHUB
 	|| git clone "https://gitlab.com/duckafire/duckafire" # gitLAB (fallback)
 	then
-		ln "./duckafire/mybin" "$MYBIN_DIR/by-duckafire"
+		ln -s "./duckafire/mybin" "$MYBIN_DIR/by-duckafire"
 		./duckafire/vim/update
 	else
-		mkdir --parents "$HOME/.vim/autoload" "$HOME/.vim/backup"
+		mkdir --parents "$HOME/.vim/autoload" "$HOME/.vim/backup" "$HOME/.vim/swap"
 
 		# This has a fallback.
 		wget --quiet --output-document="$HOME/.vimrc" "https://raw.githubusercontent.com/duckafire/duckafire/refs/heads/main/vim/vimrc" || wget --quiet --output-document="$HOME/.vimrc" "https://gitlab.com/duckafire/duckafire/-/raw/main/vim/vimrc?ref_type=heads"
