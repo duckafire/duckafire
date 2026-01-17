@@ -271,6 +271,13 @@ then
 	inc_gerr
 fi
 
+if [ "$(echo "$XDG_CURRENT_DESKTOP" | tr '[:upper:]' '[:lower:]')" != "lxqt" ]
+then
+	echo "Unsupported desktop environment: \"$XDG_CURRENT_DESKTOP\"."
+	echo "Expecting: lxqt"
+	inc_gerr
+fi
+
 clear_global_scope
 unset OS_RELEASE OS_VERSION OS_NAME is_supported_version guard_error inv_gerr
 test $guard_errors -eq 0 && exit $guard_errors
