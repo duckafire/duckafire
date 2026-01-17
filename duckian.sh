@@ -196,6 +196,9 @@ SUPPORTED_VERSIONS="13"
 # It indicates this script already was runned.
 GUARD_FILE="/var/.duckian.sh"
 
+# Common Installation Flags.
+APT_CIF="-y --no-install-recommends --no-install-suggets"
+
 TRUE=1
 FALSE=0
 
@@ -270,6 +273,22 @@ fi
 clear_global_scope
 unset OS_RELEASE OS_VERSION OS_NAME is_supported_version guard_error inv_gerr
 test $guard_errors -eq 0 && exit $guard_errors
+
+
+####################################################################################################
+
+
+apt update
+
+# Uncomplicated FireWall; good to common users;
+# using default configurations.
+apt install $APT_CIF ufw
+ufw enable
+
+systemctl bluetooth --now disable
+
+# Turn off microphone.
+amixer set Capture nocap
 
 
 ####################################################################################################
