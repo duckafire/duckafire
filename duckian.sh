@@ -113,3 +113,59 @@
 # Run `~/Downloads/repo/duckafire/vim/update`:
 # * Create `~/.vimrc` based `~/Downloads/repo/duckafire/vim/vimrc`,
 # * Download plug.vim.
+
+
+echo '
+$$$$$$   $$   $$  $$$$$$$  $$  $$  $$$$  $$$$$$  $$   $$
+$$$$$$$  $$   $$  $$$$$$$  $$  $$  $$$$  $$$$$$  $$$  $$
+$$   $$  $$   $$  $$       $$  $$   $$   $$  $$  $$$$$$$
+$$   $$  $$   $$  $$       $$$$$    $$   $$$$$$  $$$$$$$
+$$   $$  $$   $$  $$       $$$$$    $$   $$$$$$  $$ $$$$
+$$$$$$$  $$$$$$$  $$$$$$$  $$  $$  $$$$  $$  $$  $$  $$$
+$$$$$$   $$$$$$$  $$$$$$$  $$  $$  $$$$  $$  $$  $$   $$
+
+                                                      v0.0.1
+
+Pos-installing script to Debian: 13. MIT License
+duckian.sh Copyright (c) 2026 DuckAfire <https://duckafire.gitlab.io>
+
+
+[!] CAUTION
+
+  This script will do significant changes in your OS, of which many
+are irreversible. Before execute this script, PLEASE:
+
+* Revise this script;
+* Do a backup of your OS;
+* Have a ISO file to reinstall your OS (whether necessary); and,
+* Have sure of this process will not be interrupted (it can corrupt some things).
+
+  This script "thinks" nothing changes was done in OS after its installation,
+because of this, it does not verify the existing of some "things". Please,
+avoid execute this script after to do significant changes in your OS.
+
+  This script is provided NO WARRANTY; you are the ONLY resposible of
+any and all problem caused by this script in your OS after run it,
+what exempt ALL MANTAINERS of this project of any and all responsability.
+
+'
+
+placeholder=""
+
+echo 'Do you want to continue the execution of this script?
+Yes [ENTER]
+No  [^C]
+'
+read placeholder
+
+echo 'DO YOU WANT TO CONTINUE THE EXECUTION OF THIS SCRIPT?
+Yes [ENTER]
+No  [^C]
+'
+read placeholder
+
+unset placeholder
+echo "Start script..."
+echo 'Please, DO NOT stop this process.
+'
+
