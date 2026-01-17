@@ -413,3 +413,28 @@ mkdir "$MYBIN_DIR"
 
 
 ####################################################################################################
+
+
+test ! -d "$REPO_DIR" && mkdir --parents "$REPO_DIR"
+(
+	cd "$REPO_DIR"
+
+	if git clone "https://github.com/duckafire/duckafire" # gitHUB
+	|| git clone "https://gitlab.com/duckafire/duckafire" # gitLAB (fallback)
+	then
+		ln "./duckafire/mybin" "$MYBIN_DIR/by-duckafire"
+		./duckafire/vim/update
+	else
+		mkdir --parents "$HOME/.vim/autoload" "$HOME/.vim/backup"
+
+		# This has a fallback.
+		wget --quiet --output-document="$HOME/.vimrc" "https://raw.githubusercontent.com/duckafire/duckafire/refs/heads/main/vim/vimrc" || wget --quiet --output-document="$HOME/.vimrc" "https://gitlab.com/duckafire/duckafire/-/raw/main/vim/vimrc?ref_type=heads"
+
+		wget --quiet --output-document="$HOME/.vim/autoload/plug.vim" "https://www.vim.org/scripts/download_script.php?src_id=23826"
+	fi
+
+	# Silent failure.
+)
+
+
+####################################################################################################
