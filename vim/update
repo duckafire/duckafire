@@ -1,0 +1,76 @@
+#!/usr/bin/env sh
+
+
+set -euo pipefail
+
+
+DIR="$(dirname "$(realpath "$0")")"
+VIMRC_SRC="$DIR/vimrc"
+VIMRC_DEST="$HOME/.vimrc"
+
+
+if [ ! -f "$HOME/.vim/autoload/plug.vim" ]
+then
+	echo "plug.vim not found. Trying install it..."
+
+	if type wget &>/dev/null
+	then
+		test -d "$HOME/.vim/autoload" && mkdir --parents "$HOME/.vim/autoload"
+
+		if wget --quiet --output-document="$HOME/.vim/autoload/plug.vim" "https://www.vim.org/scripts/download_script.php?src_id=23826"
+		then
+			echo "plug.vim installed with success!"
+		else
+			echo "Impossible to install plug.vim"
+			echo "\"Strange\" error."
+		fi
+	else
+		echo "Impossible to install plug.vim"
+		echo "wget not found."
+	fi
+fi
+
+
+if [ ! -f "$VIMRC_SRC" ]
+then
+	echo "Source file not found: \"$VIMRC_SRC\"."
+	unset DIR VIMRC_SRC VIMRC_DEST
+	exit 0
+fi
+
+
+if [ ! -f "$VIMRC_DEST" ]
+then
+	cat "$VIMRC_SRC" > "$VIMRC_DEST"
+	echo "File created with success!"
+	unset DIR VIMRC_SRC VIMRC_DEST
+	exit 0
+fi
+
+
+if [ -d "$VIMRC_DEST" ]
+then
+	echo 'A directory named as '"\"$VIMRC_DEST\""' already exist.
+Rename, move, or delete it and try again (doing
+a backup is recommended).
+ABORT.'
+	unset DIR VIMRC_SRC VIMRC_DEST
+	exit 1
+fi
+
+
+echo '[WARNING] This will OVERRIDE your '"\"$VIMRC_DEST\""';
+          do you want to continue?
+          Yes [ENTER]
+          No  [CTRL + C]'
+# It is waiting a decision
+read foo
+unset foo
+
+
+cat "$VIMRC_SRC" > "$VIMRC_DEST"
+echo "File overrided with success!"
+
+
+unset DIR VIMRC_SRC VIMRC_DEST
+exit 0
