@@ -221,9 +221,12 @@ REPO_DIR="$HOME/Downloads/repo"
 # It contains user executable files.
 MYBIN_DIR="$HOME/.mybin"
 
+# Symbolic link to `~/Downloads/repo/duckafire/mybin`.
+DUCKBIN_DIR="$HOME/.duckbin"
+
 clear_global_scope()
 {
-	unset TRUE FALSE SUPPORTED_VERSIONS GUARD_FILE USER_NAME NET_MAN_BLACK_LIST APT_CIF MYBIN_DIR
+	unset TRUE FALSE SUPPORTED_VERSIONS GUARD_FILE USER_NAME NET_MAN_BLACK_LIST APT_CIF MYBIN_DIR DUCKBIN_DIR
 }
 
 
@@ -414,7 +417,7 @@ umask 0077
 
 # Set directory to user customized
 # executable files.
-PATH="$PATH:$HOME/.mybin"
+PATH="$PATH:'"$MYBIN:$DUCKBIN"'"
 
 ### END: duckian.sh
 ' >> "$HOME/.bashrc"
@@ -448,7 +451,7 @@ test ! -d "$REPO_DIR" && mkdir --parents "$REPO_DIR"
 	if git clone "https://github.com/duckafire/duckafire" # gitHUB
 	|| git clone "https://gitlab.com/duckafire/duckafire" # gitLAB (fallback)
 	then
-		ln -s "./duckafire/mybin" "$MYBIN_DIR/by-duckafire"
+		ln -s "./duckafire/mybin" "$HOME/.duckbin"
 		./duckafire/vim/update
 	else
 		mkdir --parents "$HOME/.vim/autoload" "$HOME/.vim/backup" "$HOME/.vim/swap"
