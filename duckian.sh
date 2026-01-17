@@ -414,6 +414,22 @@ mkdir "$MYBIN_DIR"
 
 ####################################################################################################
 
+# CREATE ~/.bash_aliases
+echo '### START: duckian.sh
+BLUE_ON="sudo systemctl start bluetooth"
+BLUE_OFF="sudo systemctl stop bluetooth"
+
+DOCKER_ON="sudo systemctl start docker"
+DOCKER_OFF="sudo systemctl stop docker"
+
+MP_ON="amixer set Capture cap"
+MP_OFF="amixer set Capture nocap"
+### END: duckian.sh
+' > "$HOME/.bash_aliases"
+
+
+####################################################################################################
+
 
 test ! -d "$REPO_DIR" && mkdir --parents "$REPO_DIR"
 (
