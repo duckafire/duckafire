@@ -197,6 +197,12 @@ SUPPORTED_VERSIONS="13"
 # It indicates this script already was runned.
 GUARD_FILE="/var/.duckian.sh"
 
+# It is not using `whoami` because it will
+# return "root".
+USER_NAME="$(basename "$HOME")"
+
+NET_MAN_BLACK_LIST="/etc/NetworkManager/conf.d/docker-unmanaged.conf"
+
 # Common Installation Flags.
 APT_CIF="-y --no-install-recommends --no-install-suggets"
 
@@ -300,7 +306,7 @@ apt update
 apt install $APT_CIF ufw
 ufw enable
 
-systemctl bluetooth --now disable
+systemctl disable --now bluetooth
 
 # Turn off microphone.
 amixer set Capture nocap
@@ -349,6 +355,20 @@ apt autoremove -y
 apt install $APT_CIF $install_packages
 
 unset purge_packages purge_conf install_packages
+
+
+####################################################################################################
+
+
+usermod -aG docker "$USER_NAME"
+systemctl disable --now docker
+
+echo '[keyfile]
+unmanaged-devices=interface-name:docker0;interface-name:br-*
+' > "$NET_MAN_BLACK_LIST"
+
+# Apply black-list.
+systemclt reload NetworkManager
 
 
 ####################################################################################################
