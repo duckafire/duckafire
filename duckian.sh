@@ -97,28 +97,31 @@
 # * luajit,
 # * openjdk-25-jdk;
 #
-# Add "executor user" to Docker Group (user name is obtained through `$HOME`).
+# Add "executor user" to Docker Group.
 #
 # Disable Docker Daemon on by default (it will need to be turned on manually);
 #
 # Create a black-list with Docker Networks to NetworkManager;
 #
-# Create `~/.duckian_bashrc` to increment `~/.bashrc`:
+# Increment `~/.bashrc`:
 # * Change "Prompt" structure (header before major of user inputs),
 # * Add permission mask `0077` to created files (high privacy),
 # * Add directory to executable files of the user (`~/.mybin`);
 #
 # Add `~/.bash_aliases` with shortcuts to start/stop:
 # * Bluetooth,
-# * Docker Daemon;
+# * Docker Daemon,
+# * Microphone;
 #
-# Download DuckAfire's profile repository from GitHub, or GitLab (fallback) to `~/Downloads/repo/`;
+# Try to download DuckAfire's profile repository from GitHub, or GitLab (fallback) to `~/Downloads/repo/`;
 #
-# Add symbilic link of `~/Downloads/repo/duckafire/mybin` to `~/.mybin/`;
+# Try to add symbilic link of `~/Downloads/repo/duckafire/mybin` to `~/.mybin/`;
 #
-# Run `~/Downloads/repo/duckafire/vim/update`:
+# Try to run `~/Downloads/repo/duckafire/vim/update`:
 # * Create `~/.vimrc` based `~/Downloads/repo/duckafire/vim/vimrc`,
 # * Download plug.vim.
+#
+# Ask whether you want to reboot your OS after to run this script.
 
 
 ####################################################################################################
