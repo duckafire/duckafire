@@ -279,6 +279,13 @@ test $guard_errors -eq 0 && exit $guard_errors
 ####################################################################################################
 
 
+echo "$(date)"'
+This OS was configured using `duckian.sh`,
+from:
+	* https://github.com/duckafire/duckafire
+	* https://gitlab.com/duckafire/duckafire
+' > "$GUARD_FILE"
+
 apt update
 
 # Uncomplicated FireWall; good to common users;
