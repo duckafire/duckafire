@@ -191,20 +191,7 @@ echo 'Please, DO NOT stop this process.
 # changes these information
 # (whether necessary).
 
-# Separated with spaces.
-SUPPORTED_VERSIONS="13"
-
-# It indicates this script already was runned.
-GUARD_FILE="/var/.duckian.sh"
-
-# It is not using `whoami` because it will
-# return "root".
-USER_NAME="$(basename "$HOME")"
-
-NET_MAN_BLACK_LIST="/etc/NetworkManager/conf.d/docker-unmanaged.conf"
-
-# Common Installation Flags.
-APT_CIF="-y --no-install-recommends --no-install-suggets"
+set -u
 
 TRUE=1
 FALSE=0
@@ -221,9 +208,30 @@ is_false()
 	return $FALSE
 }
 
+# Separated with spaces.
+SUPPORTED_VERSIONS="13"
+
+# It indicates this script already was runned.
+GUARD_FILE="/var/.duckian.sh"
+
+# It is not using `whoami` because it will
+# return "root".
+USER_NAME="$(basename "$HOME")"
+
+NET_MAN_BLACK_LIST="/etc/NetworkManager/conf.d/docker-unmanaged.conf"
+
+# Common Installation Flags.
+APT_CIF="-y --no-install-recommends --no-install-suggets"
+
+# Directory to store Git repositories.
+REPO_DIR="$HOME/Downloads/repo"
+
+# It contains user executable files.
+MYBIN_DIR="$HOME/.mybin"
+
 clear_global_scope()
 {
-	unset SUPPORTED_VERSIONS GUARD_FILE TRUE FALSE is_true is_false
+	unset TRUE FALSE is_true is_false SUPPORTED_VERSIONS GUARD_FILE USER_NAME NET_MAN_BLACK_LIST APT_CIF MYBIN_DIR DUCKIAN_BASHRC
 }
 
 
@@ -369,6 +377,39 @@ unmanaged-devices=interface-name:docker0;interface-name:br-*
 
 # Apply black-list.
 systemclt reload NetworkManager
+
+
+####################################################################################################
+
+
+echo '
+### START: from duckian.sh
+
+# Set "title text" in terminals
+case "$TERM" in
+	xterm-color|*-256color)
+		PS1='"'"'${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\w\[\033[00m\]\$ '"'"'
+		;;
+	xterm*|rxvt*)
+		PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+		;;
+	*)
+		PS1='"'"'${debian_chroot:+($debian_chroot)}\w\$ '"'"'
+		;;
+esac
+
+# Define permission to created
+# files (RW to OWNER).
+umask 0077
+
+# Set directory to user customized
+# executable files.
+PATH="$PATH:$HOME/.mybin"
+
+### END: duckian.sh
+' >> "$HOME/.bashrc"
+
+mkdir "$MYBIN_DIR"
 
 
 ####################################################################################################
