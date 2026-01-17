@@ -146,6 +146,7 @@ are irreversible. Before execute this script, PLEASE:
 
 * Revise this script;
 * Do a backup of your OS;
+* Have a stable internet connect;
 * Have a ISO file to reinstall your OS (whether necessary); and,
 * Have sure of this process will not be interrupted (it can corrupt some things).
 
