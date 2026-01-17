@@ -176,8 +176,8 @@ No  [^C]
 read placeholder
 
 echo 'DO YOU WANT TO CONTINUE THE EXECUTION OF THIS SCRIPT?
-Yes [ENTER]
-No  [^C]
+YES [ENTER]
+NO  [^C]
 '
 read placeholder
 
@@ -454,6 +454,27 @@ test ! -d "$REPO_DIR" && mkdir --parents "$REPO_DIR"
 
 	# Silent failure.
 )
+
+
+####################################################################################################
+
+
+clear_global_scope
+
+echo 'Do you want to reboot your OS now?
+Yes [ENTER]
+No  [^C]
+'
+read placeholder
+
+echo 'DO YOU WANT TO REBOOT YOUR OS NOW?
+YES [ENTER]
+NO  [^C]
+'
+read placeholder
+
+unset placeholder
+reboot
 
 
 ####################################################################################################
