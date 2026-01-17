@@ -1,6 +1,9 @@
 #!/usr/bin/env sh
 
 
+####################################################################################################
+
+
 # duckian.sh
 # MIT License
 #
@@ -23,6 +26,9 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
+
+
+####################################################################################################
 
 
 # IN SUMMARY, WHAT WILL THIS DO?
@@ -115,6 +121,9 @@
 # * Download plug.vim.
 
 
+####################################################################################################
+
+
 echo '
 $$$$$$   $$   $$  $$$$$$$  $$  $$  $$$$  $$$$$$  $$   $$
 $$$$$$$  $$   $$  $$$$$$$  $$  $$  $$$$  $$$$$$  $$$  $$
@@ -150,6 +159,10 @@ what exempt ALL MANTAINERS of this project of any and all responsability.
 
 '
 
+
+####################################################################################################
+
+
 placeholder=""
 
 echo 'Do you want to continue the execution of this script?
@@ -169,3 +182,94 @@ echo "Start script..."
 echo 'Please, DO NOT stop this process.
 '
 
+
+####################################################################################################
+
+
+# Please update header after
+# changes these information
+# (whether necessary).
+
+# Separated with spaces.
+SUPPORTED_VERSIONS="13"
+
+# It indicates this script already was runned.
+GUARD_FILE="/var/.duckian.sh"
+
+TRUE=1
+FALSE=0
+
+is_true()
+{
+	test $1 -eq $TRUE && return $TRUE
+	return $FALSE
+}
+
+is_false()
+{
+	test $1 -eq $FALSE && return $TRUE
+	return $FALSE
+}
+
+clear_global_scope()
+{
+	unset SUPPORTED_VERSIONS GUARD_FILE TRUE FALSE is_true is_false
+}
+
+
+####################################################################################################
+
+
+OS_RELEASE="$(cat /etc/os-release)"
+OS_VERSION="$(echo "$OS_RELEASE" | grep 'VERSION_ID' | grep -Po '\d+')"
+OS_NAME="$(echo "$OS_RELEASE" | grep '^ID' | grep -Po '[a-z]+')"
+
+is_supported_version=$FALSE
+guard_errors=0
+
+inc_gerr()
+{
+	guard_errors=$(($guard_errors + 1))
+}
+
+if [ "$(whoami)" != "root" ]
+then
+	echo "Run this script as Super User."
+	inc_gerr
+fi
+
+if [ "$OS_NAME" = "debian" ]
+then
+	for v in $SUPPORTED_VERSIONS
+	do
+		if [ "$v" = "$OS_VERSION" ]
+		then
+			is_supported_version=$TRUE
+			break
+		fi
+	done
+
+	if is_false $is_supported_version
+	then
+		echo "Unsuppoted Debian version: \"$OS_VERSION\"."
+		echo "Expecting one of these: $SUPPORTED_VERSIONS."
+		inc_gerr
+	fi
+else
+	echo "Unsupported Linux Distribution: \"$OS_NAME\"."
+	echo "Expecting: Debain."
+	inc_gerr
+fi
+
+if [ -f "$GUARD_FILE" ]
+then
+	echo "This script already was runned."
+	inc_gerr
+fi
+
+clear_global_scope
+unset OS_RELEASE OS_VERSION OS_NAME is_supported_version guard_error inv_gerr
+test $guard_errors -eq 0 && exit $guard_errors
+
+
+####################################################################################################
