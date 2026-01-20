@@ -1,0 +1,39 @@
+#!/usr/bin/env sh
+
+# Example:
+#
+
+set -e
+
+if [ $# -eq 0 ]
+then
+	echo "git-lh <alias> <user> <repo> [is-ssh]"
+	exit 0
+fi
+
+test $# -lt 2 && echo "No user name."
+
+if [ $# -lt 3 ]
+then
+	echo "No repository name."
+	exit 1
+fi
+
+test $# -gt 4 && echo "Some arguments were ignored."
+
+# Check if it is inside
+# of a Git repository.
+git rev-parse --show-toplevel 1>/dev/null
+
+NAME="$1"
+ENDPOINT="$2/$3"
+
+for suffix in hub lab
+do
+	ARGS="$NAME-$suffix $(test -z "$4" && echo "https://git$suffix.com/" || echo "git@github.com:")$ENDPOINT.git"
+	echo "$ARGS"
+	git remote add $ARGS
+done
+
+unset NAME ENDPOINT ARGS
+exit 0
