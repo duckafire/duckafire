@@ -30,7 +30,7 @@ ENDPOINT="$2/$3"
 
 for suffix in hub lab
 do
-	ARGS="$NAME-$suffix $(test -z "$4" && echo "https://git$suffix.com/" || echo "git@github.com:")$ENDPOINT.git"
+	ARGS="$NAME-$suffix $(test -z "$4" && echo "https://git$suffix.com/" || echo "git@git$suffix.com:")$ENDPOINT.git"
 	echo "$ARGS"
 	git remote add $ARGS
 done
