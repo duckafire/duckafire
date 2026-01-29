@@ -341,7 +341,9 @@ hexchat
 meteo-qt
 synaptic
 nano
-cups'
+cups
+cups-common
+cups-pk-helper'
 
 purge_conf=''"$HOME"'/.sane/xsane"
 '"$HOME"'/.config/smplayer"
