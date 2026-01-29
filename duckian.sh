@@ -85,16 +85,23 @@
 # * jq,
 # * tree,
 # * wget,
+# * openssh-client,
+# * libreoffice-l10n-pt-br,
+# * filezilla,
+# * keepassxc-minimal,
 # * git,
 # * vim-gtk3,
 # * docker.io,
 # * docker-cli,
+# * docker-compose,
+# * docker-buildx,
 # * gcc,
 # * g++,
 # * make,
 # * cmake,
 # * gdb,
 # * luajit,
+# * lua5.1,
 # * openjdk-25-jdk;
 #
 # Add "executor user" to Docker Group.
@@ -357,16 +364,23 @@ purge_conf=''"$HOME"'/.sane/xsane"
 install_packages='jq
 tree
 wget
+openssh-client
+libreoffice-l10n-pt-br
+filezilla
+keepassxc-minimal
 git
-vim
+vim-gtk3
 docker.io
 docker-cli
+docker-compose
+docker-buildx
 gcc
 g++
 make
 cmake
 gdb
 luajit
+lua5.1
 openjdk-25-jdk'
 
 apt purge -y $purge_packages
