@@ -429,7 +429,7 @@ unmanaged-devices=interface-name:docker0;interface-name:br-*
 ' > "$NET_MAN_BLACK_LIST"
 
 # Apply black-list.
-systemctl reload NetworkManager
+systemctl reload --now NetworkManager
 
 
 ####################################################################################################
@@ -469,11 +469,11 @@ mkdir "$MYBIN_DIR"
 
 # CREATE ~/.bash_aliases
 echo '### START: duckian.sh
-alias BLUE_ON="sudo systemctl start bluetooth"
-alias BLUE_OFF="sudo systemctl stop bluetooth"
+alias BLUE_ON="sudo systemctl start --now bluetooth"
+alias BLUE_OFF="sudo systemctl stop --now bluetooth"
 
-alias DOCKER_ON="sudo systemctl start docker"
-alias DOCKER_OFF="sudo systemctl stop docker"
+alias DOCKER_ON="sudo systemctl start --now docker"
+alias DOCKER_OFF="sudo systemctl stop --now docker docker.socket"
 
 alias MP_ON="amixer set Capture cap"
 alias MP_OFF="amixer set Capture nocap"
