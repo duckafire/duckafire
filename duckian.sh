@@ -99,6 +99,7 @@ NO_INSTALL_FROM_EXTERN_SCRIPT=1
 # * filezilla,
 # * keepassxc-minimal,
 # * git,
+# * ghostwriter,
 # * vim-gtk3,
 # * docker.io,
 # * docker-cli,
@@ -112,6 +113,9 @@ NO_INSTALL_FROM_EXTERN_SCRIPT=1
 # * luajit,
 # * lua5.1,
 # * openjdk-25-jdk;
+#
+# Install utility libraries (no recommends packages; no suggests packages) with APT:
+# * libfuse2t64;
 #
 # Add "executor user" to Docker Group.
 #
@@ -379,6 +383,7 @@ openssh-client
 libreoffice-l10n-pt-br
 filezilla
 keepassxc-minimal
+ghostwriter
 git
 vim-gtk3
 docker.io
@@ -394,13 +399,15 @@ luajit
 lua5.1
 openjdk-25-jdk'
 
+install_libraries='libfuse2t64'
+
 apt purge -y $purge_packages
 rm -rf $purge_conf
 apt autoremove -y
 
-apt install $APT_CIF $install_packages
+apt install $APT_CIF $install_packages $install_libraries
 
-unset purge_packages purge_conf install_packages
+unset purge_packages purge_conf install_packages install_libraries
 
 
 ####################################################################################################
