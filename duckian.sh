@@ -4,15 +4,6 @@
 ####################################################################################################
 
 
-NO_INSTALL_FROM_EXTERN_SCRIPT=1
-# Comment this line to download, and
-# auto-install (BA)SH scripts out from
-# APT Repositories.
-
-
-####################################################################################################
-
-
 # duckian.sh
 # MIT License
 #
@@ -410,21 +401,6 @@ apt autoremove -y
 apt install $APT_CIF $install_packages $install_libraries
 
 unset purge_packages purge_conf install_packages install_libraries
-
-
-####################################################################################################
-
-
-(
-	set +u -eo pipefail
-
-	if [ -n "$NO_INSTALL_FROM_EXTERN_SCRIPT" ]
-	then
-		# Install bun.js
-		export BUN_INSTALL="$MYBIN_DIR"
-		wget -qO- --max-redirect=99 "https://bun.com/install" | bash
-	fi
-)
 
 
 ####################################################################################################
