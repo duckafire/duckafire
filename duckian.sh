@@ -112,7 +112,8 @@ NO_INSTALL_FROM_EXTERN_SCRIPT=1
 # * gdb,
 # * luajit,
 # * lua5.1,
-# * openjdk-25-jdk;
+# * openjdk-25-jdk,
+# * php-cli;
 #
 # Install utility libraries (no recommends packages; no suggests packages) with APT:
 # * libfuse2t64;
@@ -397,7 +398,8 @@ cmake
 gdb
 luajit
 lua5.1
-openjdk-25-jdk'
+openjdk-25-jdk
+php-cli'
 
 install_libraries='libfuse2t64'
 
