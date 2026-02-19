@@ -1,4 +1,5 @@
 " Author: DuckAfire
+" Last Change: 2026 Feb 19
 "
 " Repository:
 " * GitHub: https://github.com/duckafire/duckafire
@@ -8,7 +9,7 @@
 "
 " MIT License
 "
-" Copyright (c) 2024-2025 DuckAfire <duckafire.github.io/nest>
+" Copyright (c) 2024-2026 DuckAfire <https://duckafire.gitlab.io>
 "
 " Permission is hereby granted, free of charge, to any person obtaining a copy
 " of this software and associated documentation files (the "Software"), to deal
@@ -28,42 +29,183 @@
 " OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 " SOFTWARE.
 
+" TODO: add "guard condition" to things that does not exist in vim7/vim8.
 
-call plug#begin()
-	" features
-	Plug 'kshenoy/vim-signature' " commend line 54, 55, and 56 from '~/.vim/plugged/vim-indentguides/plugin/indentguides.vim'
-	Plug 'thaerkh/vim-indentguides'
+" PLUGINS:
+" managed by Plug.vim
 
-	" syntax
-	Plug 'pangloss/vim-javascript'
-	Plug 'cakebaker/scss-syntax.vim'
-	Plug 'leafgarland/typescript-vim'
+if filereadable($HOME.'/.vim/autoload/plug.vim')
+  call plug#begin()
 
-	" colorschemes
-	Plug 'duckafire/ancient-vim'
+  Plug 'kshenoy/vim-signature'
 
-call plug#end()
+  call plug#end()
 
-" PLUG CONFIGURATIONS:
-" vim-signature
-" SignatureMarkLine
-hi! SignatureMarkText   ctermfg=white ctermbg=black cterm=none
-hi! SignatureMarkerText ctermfg=green ctermbg=black cterm=none
-hi! SignatureMarkerLine ctermfg=none  ctermbg=235   cterm=bold
-
-" vim-indentguides
-let g:indentguides_ignorelist = []
-let g:indentguides_spacechar = '┆'
-let g:indentguides_tabchar = '|'
-let g:indentguides_concealcursor_unaltered=1
-
-" ancient-vim
-let g:languages_to_ancient_vim = ["c", "cpp", "lua", "javascript", "typescript", "java", "python"]
+  " cleared: SignatureMarkLine; SignatureMarkerLine.
+  hi! SignatureMarkText ctermfg=214 ctermbg=none cterm=none
+  hi! link SignatureMarkerText SignatureMarkText
+endif
 
 
-" VIM CONFIGURATION:
+" COLORS SHADES:
 
-" enable
+" 235 black         253 white
+" 027 darkblue      032 blue
+" 023 darkcyan      039 cyan
+" 243 darkgray      249 gray
+" 028 darkgreen     114 green
+" 127 darkmagenta   206 magenta
+" 088 darkred       161 red
+" 100 darkyellow    214 yellow
+" (236 background of cursor line)
+
+
+" CURSOR STYLE:
+" * 0: blinking block.           * 4: steady underline.
+" * 1: blinking block (default). * 5: blinking bar (xterm).
+" * 2: steady block.             * 6: steady bar (xterm).
+" * 3: blinking underline.
+let &t_SI = "\<Esc>[6 q" " Start Insert
+let &t_SR = "\<Esc>[4 q" " Start Replace
+let &t_EI = "\<Esc>[2 q" " End Insert
+
+
+" SYNTAX RULES:
+
+let g:c_functions=1
+let g:c_syntax_for_h=1
+let g:c_no_if0=1
+let g:c_no_c99=1
+let g:c_no_c11=1
+let g:c_no_c23=1
+
+filetype on
+syntax on
+
+
+" SYNTAX HIGHLIGHT:
+
+" :h group-name
+hi! Boolean         ctermfg=161  ctermbg=none cterm=none
+hi! Character       ctermfg=39   ctermbg=none cterm=none
+hi! Comment         ctermfg=243  ctermbg=none cterm=italic
+hi! Debug           ctermfg=214  ctermbg=none cterm=underline
+hi! Error           ctermfg=none ctermbg=161  cterm=bold
+hi! Function        ctermfg=none ctermbg=none cterm=italic
+hi! Identifier      ctermfg=none ctermbg=none cterm=none
+hi! Ignore          ctermfg=243  ctermbg=none cterm=bold
+hi! Label           ctermfg=214  ctermbg=none cterm=italic
+hi! Special         ctermfg=127  ctermbg=none cterm=none
+hi! SpecialChar     ctermfg=206  ctermbg=none cterm=bold
+hi! SpecialComment  ctermfg=249  ctermbg=none cterm=italic
+hi! Statement       ctermfg=214  ctermbg=none cterm=none
+hi! String          ctermfg=206  ctermbg=none cterm=none
+hi! Todo            ctermfg=214  ctermbg=235  cterm=standout,bold
+hi! Type            ctermfg=114  ctermbg=none cterm=none
+hi! Underlined      ctermfg=39   ctermbg=none cterm=underline
+
+hi! link Constant Boolean
+
+hi! link Float     Character
+hi! link Number    Character
+hi! link Define    Character
+hi! link Include   Character
+hi! link Macro     Character
+hi! link PreCondit Character
+hi! link PreProc   Character
+
+hi! link Conditional Statement
+hi! link Delimiter   Statement
+hi! link Exception   Statement
+hi! link Keyword     Statement
+hi! link Operator    Statement
+hi! link Repeat      Statement
+hi! link Tag         Statement
+
+hi! link StorageClass Type
+hi! link Structure    Type
+hi! link Typedef      Type
+
+hi! Added   ctermfg=114 ctermbg=none cterm=none
+hi! Changed ctermfg=32  ctermbg=none cterm=none
+hi! Removed ctermfg=161 ctermbg=none cterm=none
+
+
+" EDITOR STYLE:
+
+hi! ColorColumn      ctermfg=88   ctermbg=88   cterm=none
+hi! ComplMatchIns    ctermfg=249  ctermbg=none cterm=none
+hi! Conceal          ctermfg=39   ctermbg=none cterm=bold
+hi! CurSearch        ctermfg=235  ctermbg=214  cterm=bold
+hi! Cursor           ctermfg=none ctermbg=none cterm=none
+hi! CursorColumn     ctermfg=none ctermbg=236  cterm=none
+hi! CursorLineFold   ctermfg=253  ctermbg=243  cterm=italic,bold
+hi! CursorLineNr     ctermfg=249  ctermbg=236  cterm=bold
+hi! DiffAdd          ctermfg=none ctermbg=28   cterm=none
+hi! DiffChange       ctermfg=none ctermbg=27   cterm=none
+hi! DiffDelete       ctermfg=none ctermbg=88   cterm=none
+hi! Directory        ctermfg=32   ctermbg=none cterm=none
+hi! EndOfBuffer      ctermfg=235  ctermbg=235  cterm=none
+hi! ErrorMsg         ctermfg=253  ctermbg=88   cterm=bold
+hi! FoldColumn       ctermfg=249  ctermbg=243  cterm=italic
+hi! IncSearch        ctermfg=235  ctermbg=28   cterm=bold
+hi! LineNr           ctermfg=243  ctermbg=none cterm=none
+hi! MatchParen       ctermfg=32   ctermbg=none cterm=none term=none
+hi! MessageWindow    ctermfg=214  ctermbg=none cterm=none
+hi! ModeMsg          ctermfg=none ctermbg=none cterm=bold
+hi! MsgArea          ctermfg=none ctermbg=none cterm=none
+hi! NonText          ctermfg=243  ctermbg=none cterm=none
+hi! Normal           ctermfg=253  ctermbg=235  cterm=none
+hi! Pmenu            ctermfg=none ctermbg=237  cterm=none
+hi! PmenuExtra       ctermfg=none ctermbg=237  cterm=italic
+hi! PmenuExtraSel    ctermfg=none ctermbg=240  cterm=italic
+hi! PmenuKind        ctermfg=none ctermbg=237  cterm=bold
+hi! PmenuKindSel     ctermfg=none ctermbg=240  cterm=bold,italic
+hi! PmenuMatch       ctermfg=none ctermbg=240  cterm=none
+hi! PmenuMatchSel    ctermfg=none ctermbg=240  cterm=bold
+hi! PmenuSbar        ctermfg=243  ctermbg=243  cterm=none
+hi! PmenuSel         ctermfg=none ctermbg=240  cterm=none
+hi! PmenuThumb       ctermfg=none ctermbg=253  cterm=none
+hi! QuickFixLine     ctermfg=none ctermbg=243  cterm=bold
+hi! Search           ctermfg=235  ctermbg=214  cterm=none
+hi! SpecialKey       ctermfg=243  ctermbg=none cterm=italic
+hi! SpellBad         ctermfg=none ctermbg=88   cterm=none
+hi! SpellCap         ctermfg=none ctermbg=243  cterm=none
+hi! SpellLocal       ctermfg=none ctermbg=100  cterm=none
+hi! SpellRare        ctermfg=none ctermbg=23   cterm=none
+hi! StatusLine       ctermfg=none ctermbg=32   cterm=bold
+hi! StatusLineNC     ctermfg=235  ctermbg=253  cterm=bold
+hi! StatusLineTerm   ctermfg=235  ctermbg=114  cterm=bold
+hi! StatusLineTermNC ctermfg=235  ctermbg=243  cterm=bold
+hi! TabLine          ctermfg=none ctermbg=243  cterm=none
+hi! TabLineFill      ctermfg=none ctermbg=253  cterm=none
+hi! TabLineSel       ctermfg=253  ctermbg=235  cterm=bold
+hi! VertSplit        ctermfg=253  ctermbg=253  cterm=none
+hi! Visual           ctermfg=235  ctermbg=253  cterm=none
+hi! WarningMsg       ctermfg=253  ctermbg=161  cterm=bold
+hi! WildMenu         ctermfg=235  ctermbg=214  cterm=bold
+
+hi! link CursorLine     CursorColumn
+hi! link CursorLineSign CursorColumn
+
+hi! link Folded FoldColumn
+
+hi! link LineNrAbove LineNr
+hi! link LineNrBelow LineNr
+
+hi! link MoreMsg           MessageWindow
+hi! link PopupNotification MessageWindow
+hi! link PopupSelected     MessageWindow
+hi! link Question          MessageWindow
+hi! link Title             MessageWindow
+
+hi! link DiffText    Cursor
+hi! link lCursor     Cursor
+hi! link SignColumn  Cursor
+
+
+" EDITOR RULES:
+" TODO complete this
 set number
 set autoindent
 set hlsearch
@@ -72,7 +214,7 @@ set lazyredraw
 set ruler
 set wildmenu
 set cursorline
-set linebreak " 'nowrap' made this redundant
+set linebreak
 set foldenable
 set confirm
 set modeline
@@ -81,7 +223,6 @@ set splitright
 set splitbelow
 set list
 
-" disable
 set noexpandtab
 set noshiftround
 set nosmarttab
@@ -98,7 +239,6 @@ set nospell
 set nobackup
 set noautowrite
 
-" values
 set tabstop=4
 set shiftwidth=4
 set complete=.,w,b,u,t,i
@@ -111,8 +251,8 @@ set background=dark
 set foldmethod=indent
 set foldnestmax=20
 set backspace=indent,eol,start
-set dir=~/.vim/swap " this folder must be created
-set backupdir=~/.vim/backup " this folder must be created
+set dir=~/.vim/swap
+set backupdir=~/.vim/backup
 set formatoptions=n
 set history=50
 set nrformats=bin,octal,hex
@@ -123,46 +263,6 @@ set scrolloff=25
 set cmdheight=1
 set conceallevel=0
 set foldlevel=999
-set listchars=tab:\|\ ,trail:·,extends:»,precedes:« " remove `eol:$` (influence vim-indentguides)
+set listchars=tab:\|\ ,trail:·,extends:»,precedes:«
 set completeopt=menu,preview,noselect
 
-filetype on
-syntax on
-colorschem ancient
-
-
-" CURSOR STYLE:
-" * 0: blinking block.
-" * 1: blinking block (default).
-" * 2: steady block.
-" * 3: blinking underline.
-" * 4: steady underline.
-" * 5: blinking bar (xterm).
-" * 6: steady bar (xterm).
-let &t_SI = "\<Esc>[6 q" " Start Insert
-let &t_SR = "\<Esc>[4 q" " Start Replace
-let &t_EI = "\<Esc>[2 q" " End Insert
-
-
-augroup MARKDOWN_LINE_LIMIT
-	autocmd!
-	autocmd BufRead,BufNewFile *.md setlocal colorcolumn=90
-	autocmd FileType markdown setlocal colorcolumn=90
-augroup END
-
-augroup STRING_AS_AN_INDEX
-	autocmd!
-	" strings between []:
-	" ['foo'] ["foo"]
-	autocmd BufRead,BufNewFile * call matchadd("SpecialChar", "\\v\\[\\s*\\zs(('[^']*')|(\"[^\"]*\"))\\ze\\s*\\]")
-augroup END
-
-augroup C_CUSTOM_TYPES
-	autocmd!
-	" identifiers after `struct` or `enum`:
-	" enum foo; struct foo;
-	" identifiers suffixed by `_t`:
-	" foo_t bar_t
-	autocmd BufRead,BufNewFile *.c,*.h,*.cpp,*.hpp,*.cc,*.cxx call matchadd("cType", '\v((struct|enum)\s+\zs\h\w*\ze|(\h\w*_t))')
-	autocmd FileType c,cpp call matchadd("cType", '\v((struct|enum)\s+\zs\h\w*\ze|(\h\w*_t))')
-augroup END
