@@ -1,0 +1,28 @@
+#!/usr/bin/env sh
+
+if [ $# -eq 0 ]
+then
+	echo 'gitkdir [dirpath0] [...] [dirpathN]
+'
+	exit 0
+fi
+
+for dir in $@
+do
+	FILE="$dir/.gitignore"
+
+	mkdir -p "$dir"
+
+	if [ -f "$FILE" ]
+	then
+	echo "Replace content of \`$FILE\`?"'
+  Yes [ENTER]
+  No  [^C]'
+		read placeholder
+		unset placeholder
+	fi
+
+	echo '*
+!.gitignore' > "$FILE"
+done
+
