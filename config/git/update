@@ -1,0 +1,27 @@
+#!/usr/bin/env sh
+
+SCRIPT_DIR="$(dirname "$(realpath "$0")")"
+GITCONFIG_SRC="$SCRIPT_DIR/gitconfig"
+GITCONFIG_DEST="$HOME/.gitconfig"
+
+if [ -f "$GITCONFIG_DEST" ]
+then
+	echo 'This will REPLACE your gitconfig!
+Do you want to continue?
+  Yes [Enter]
+  No  [^C]'
+	read placeholder
+	unset placeholder
+fi
+
+cp "$GITCONFIG_SRC" "$GITCONFIG_DEST"
+
+echo -n "Insert your user name: "
+read userName
+
+echo -n "Insert your user email: "
+read userEmail
+
+git config --global user.name  "$userName"
+git config --global user.email "$userEmail"
+
