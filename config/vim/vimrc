@@ -73,9 +73,7 @@ let &t_EI = "\<Esc>[2 q" " End Insert
 " SYNTAX RULES:
 
 let g:c_functions=1
-let g:c_syntax_for_h=1
 let g:c_no_if0=1
-let g:c_no_c99=1
 let g:c_no_c11=1
 let g:c_no_c23=1
 
