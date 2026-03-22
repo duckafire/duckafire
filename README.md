@@ -14,8 +14,8 @@ I am **DuckAfire**, a full stack developer that **LOVE** to learn and open sourc
 
 ## Performance
 
-![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=duckafire&show_icons=true&theme=tokyonight&border_radius=20&hide=contribs)
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=duckafire&layout=compact&theme=tokyonight&border_radius=20)
+![GitHub Stats](https://github-readme-stats-eight-omega-29.vercel.app/api?username=duckafire&show_icons=true&theme=tokyonight&border_radius=20&hide=contribs)
+![Top Languages](https://github-readme-stats-eight-omega-29.vercel.app/api/top-langs/?username=duckafire&layout=compact&theme=tokyonight&border_radius=20)
 
 <br>
 
