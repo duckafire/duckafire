@@ -1,67 +1,121 @@
 # Abstract Writing Pattern To
 
+* [Programming languages](#programming-languages)
+  * [Naming things](#naming-things)
+    * [Case styles](#case-styles)
+    * [Identifiers semantic](#identifiers-semantic)
+
 ## Programming languages
 
 ### Naming things
 
-* Case style
-  * camelCase
-    * Global/local mutable/immutable variables;
-    * Public/protected/(package-)private (static) properties;
-    * Mutable/immutable parameters;
+#### Case styles
 
-    * Global/local (im)mutable reference variables to (shallow/deep im)mutable objects.
-    * Public/protected/(package-)private (im)mutable reference (static) properties to (shallow/deep im)mutable objects.
-    * (Im)mutable reference parameters to (shallow/deep im)mutable objects.
+* camelCase
+  * (Static) global/local mutable/immutable variables;
+  * Public/protected/(package-)private (static) properties;
+  * Mutable/immutable parameters;
 
-    * (Im)mutable reference variables, (static) properties, and parameters to (anonymous) non-constructor functions;
+  * (Static) global/local (im)mutable reference variables to (shallow/deep im)mutable objects.
+  * Public/protected/(package-)private (im)mutable reference (static) properties to (shallow/deep
+    im)mutable objects.
+  * (Im)mutable reference parameters to (shallow/deep im)mutable objects.
 
-    * Global/local functions; and
-    * (Abstract/overrided) public/protected/(package-)private (static) methods.
+  * (Im)mutable reference variables, (static) properties, and parameters to (anonymous)
+    non-constructor functions;
 
-  * PascalCase
-    * Classes;
-    * Uninstantiable classes;
-    * Unextendable classes;
-    * Decorations/annotation classes/functions;
-    * Exception classes;
-    * Classes-like (like Java Records, Python Data Classes, ...).
+  * (Static) global/local functions; and
+  * (Abstract/overrided) public/protected/(package-)private (static) methods.
 
-    * Interfaces;
-    * Enumerators names;
-    * Structures;
-    * Structure unions;
-    * Constructor global/local functions;
-    * Generic types;
-    * Name spaces;
-    * Classes files names;
+* PascalCase
+  * Instantiable and extendable classes;
+  * Uninstantiable classes;
+  * Unextendable classes;
+  * Decorations/annotation classes/functions;
+  * Exception classes;
+  * Classes-like (like Java Records, Python Data Classes, ...).
 
-    * Global/local (im)mutable reference variables to anonymous constructor functions;
-    * Public/protected/(package-)private reference (static) properties to anonymous constructor functions; and
-    * (Im)muttable reference parameters to anonymous constructor functions.
+  * Interfaces;
+  * Enumerators names;
+  * Structures;
+  * Unions;
+  * Constructor global/local functions;
+  * Generic types;
+  * Name spaces;
+  * Classes files names;
 
-  * kebab-case
-    * No-private files names (it includes components and templates);
-    * Directory names;
-    * String values to enumerators;
-    * Git branch names; and
-    * API routes.
+  * (Static) global/local (im)mutable reference variables to anonymous constructor functions;
+  * Public/protected/(package-)private reference (static) properties to anonymous constructor
+    functions; and
+  * (Im)muttable reference parameters to anonymous constructor functions.
 
-  * snake\_case
-    * Data cluster names;
-    * Table names from data clusters; and
-    * Table fields names data clusters.
+* kebab-case
+  * **All** no-private files names;
+  * Directory names;
+  * String values to enumerators;
+  * Git branch names; and
+  * API routes.
 
-  * SCREAMING\_SNAKE\_CASE
-    * Compile-time immutable variables, immutable (static) properties, macros;
-    * Environment variables/secrets; and
-    * Enumerators keys names.
+* snake\_case
+  * Data cluster names;
+  * Table names from data clusters; and
+  * Table fields names data clusters.
 
-  * lowercase
-    * Private file names (prefixed with a dot);
-    * Package names; and
-    * Customized (union) types.
+* SCREAMING\_SNAKE\_CASE
+  * Compile-time immutable variables, immutable (static) properties, macros;
+  * Environment variables/secrets; and
+  * Enumerators keys names.
 
-  * Train-Case
-    * Customized HTTP header fields.
+* lowercase
+  * Private directories/files names (prefixed with a dot);
+  * Package names; and
+  * Customized types (unions).
+
+* Train-Case
+  * Customized HTTP header fields.
+
+#### Identifiers semantic
+
+* **Any** identifiers, except **any** protected/private property/method, can start with one or
+  more underscores;
+* **Any** protected property/method always must be prefixed with `_`;
+* **Any** private property/method always must be prefixed with `__`;
+* Generic types always must be prefixed with `G`;
+* **Any** variable, property, and parameter of the boolean type, **any** functions and methods that
+  return a boolean value, and **any** macro that will expand to a boolean expression or value always
+  must be prefixed with one of the prefixes below — following the respective style case:
+  * `is` (*it.isEmpty*),
+  * `has` (*it.hasChildren*),
+  * `can` (*it.canDeleteFiles*), and
+  * `should` (*it.shouldUpdateScreen*);
+
+* **Any** customized types always must be suffixed with `_t`;
+* **Any** exception classes always must be suffixed with `Exception`;
+
+* In identifiers, acronyms are treated as words, so:
+  * if it is the first *words* of a `camelCase` identifier, all its letters always must be lower,
+  * if it is not the first *words* of a `camelCase` identifier — all its letters always must be
+    upper —,
+  * if it is present in a `PascalCase` identifier — all its letters always must be upper —, and
+  * if it is present in a `kebab-case` or other case that has a *separator character* — it always
+    must be separated of the other words;
+
+* **All** classes, structures, interfaces, and enumerators names always must be substantive in
+  singular form;
+
+* Uninstantiable classes names always must representate a group of *objects* (like "Person",
+  "Vehicle", and "Reptiles");
+* Instantiable classes, classes-like, and structures names always must representate a specific
+  *object* (like "User", "Car", and "Snake");
+* Enumerators names always must representate a group of things — like `TokenType` and `UserState`;
+* Interfaces names always must define:
+  * behavior (like "Validator", "EventHandler", and "Calculator"),
+  * capacity (like "Cloeable", "Storable", and "Renderable"),
+  * abstraction (like "Shape", "DataSource", and "Account"), and
+  * architecture layer (like "Client", "Service", and "Controller");
+
+* The "*Getters* and *Setters* Pattern" — mainly *Setter* — have to be avoided, because it is too
+  generic, low expressive and low clean;
+
+* **Any** asynchronous function or method always must be suffixed with `Async`;
 
