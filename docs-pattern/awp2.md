@@ -1,9 +1,26 @@
+[concept-murphys-law]: https://en.wikipedia.org/wiki/Murphy%27s_law
+[concept-kiss]:  https://en.wikipedia.org/wiki/KISS_principle
+[concept-yagni]: https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it
+
 # Abstract Writing Pattern To
 
+* [Concepts](#concepts)
 * [Programming languages](#programming-languages)
   * [Naming things](#naming-things)
     * [Case styles](#case-styles)
     * [Identifiers semantic](#identifiers-semantic)
+
+## Concepts
+
+* [Murphy's Law: *"Anything that can go wrong will go wrong."*][concept-murphys-law]: if something
+  can failure, a *Plan B* always must be created — even if the plan is return an error value,
+  throw/raise an exception, send an HTML error page, or similar.
+
+* [KISS: Keep It Simple, Stupid.][concept-kiss]: all it always must be the more simple possible —
+  sometimes, abstraction layers are necessary, but it must not be used of a exaggerated way.
+
+* [YAGNI: You Aren't Gonna Need It.][concept-yagni]: all it that is not used have to be deleted, except
+  parts of content from libraries, frameworks, assets collections, and similary that are not used.
 
 ## Programming languages
 
