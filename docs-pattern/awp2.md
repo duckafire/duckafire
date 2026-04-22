@@ -28,7 +28,7 @@
 
 #### Case styles
 
-* camelCase
+* `camelCase`
   * (Static) global/local mutable/immutable variables;
   * Public/protected/(package-)private (static) properties;
   * Mutable/immutable parameters;
@@ -44,7 +44,7 @@
   * (Static) global/local functions; and
   * (Abstract/overrided) public/protected/(package-)private (static) methods.
 
-* PascalCase
+* `PascalCase`
   * Instantiable and extendable classes;
   * Uninstantiable classes;
   * Unextendable classes;
@@ -66,29 +66,29 @@
     functions; and
   * (Im)muttable reference parameters to anonymous constructor functions.
 
-* kebab-case
+* `kebab-case`
   * **All** no-private files names;
   * Directory names;
   * String values to enumerators;
   * Git branch names; and
   * API routes.
 
-* snake\_case
+* `snake\_case`
   * Data cluster names;
   * Table names from data clusters; and
   * Table fields names data clusters.
 
-* SCREAMING\_SNAKE\_CASE
+* `SCREAMING\_SNAKE\_CASE`
   * Compile-time immutable variables, immutable (static) properties, macros;
   * Environment variables/secrets; and
   * Enumerators keys names.
 
-* lowercase
+* `lowercase`
   * Private directories/files names (prefixed with a dot);
   * Package names; and
   * Customized types (unions).
 
-* Train-Case
+* `Train-Case`
   * Customized HTTP header fields.
 
 #### Identifiers semantic
