@@ -93,14 +93,18 @@
 
 #### Identifiers semantic
 
+* **All** indentifiers always **must be** descriptive — in other words, they **must describe** the
+  intention behind their declaration, no requiring external explanations (documentation exists to
+  explain what the code does, and not how it does);
+
 * **Any** identifiers, except **any** protected/private property/method, can start with one or
   more underscores;
 * **Any** protected property/method always must be prefixed with `_`;
 * **Any** private property/method always must be prefixed with `__`;
 * Generic types always must be prefixed with `G`;
 * **Any** variable, property, and parameter of the boolean type, **any** functions and methods that
-  return a boolean value, and **any** macro that will expand to a boolean expression or value always
-  must be prefixed with one of the prefixes below — following the respective style case:
+  return a boolean value, and **any** macro that will expand to a boolean expression or value
+  always must be prefixed with one of the prefixes below — following the respective style case:
   * `is` (*it.isEmpty*),
   * `has` (*it.hasChildren*),
   * `can` (*it.canDeleteFiles*), and
