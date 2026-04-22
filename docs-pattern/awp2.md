@@ -9,6 +9,12 @@
   * [Naming things](#naming-things)
     * [Case styles](#case-styles)
     * [Identifiers semantic](#identifiers-semantic)
+* [Code structure](#code-structure)
+  * [Indentation](#indentation)
+  * [Lines](#Lines)
+  * [Comments](#comments)
+    * [Explaining snippets](#explaining-snippets)
+    * [Special comments](#special-comments)
 
 ## Concepts
 
@@ -139,4 +145,52 @@
   generic, low expressive and low clean;
 
 * **Any** asynchronous function or method always must be suffixed with `Async`;
+
+## Code structure
+
+### Indentation
+
+Each indentation layer must be formed by one unit of tabulation (`\t`) — it was chosen because its
+length changed based in the developer preferer through of the configuration of the most part of the
+text editors and IDEs —; if the language reservates tabulation (like Makefile) or requires spaces
+to indentation (like Python), two space characters must be used to do each indentation layer.
+
+(Whether necessary, only spaces must be used to align code snippets vertically or horizontally —
+after the tabulation level.)
+
+### Lines
+
+* Code lines can not have more than one hundred of characters; and
+* Empty lines can not have white-space characters.
+
+### Comments
+
+#### Explaining snippets
+
+Comments always have to be used to explain what it is implity and needs to be understood so that the
+code can be readed, understood, and edited correctly; this includes:
+
+* explain specific/uncommon acronyms;
+* explain why a specific code snippet was used instead of other (generally more common);
+* explain typing of variables, parameters, properties, and similar; and
+* other things.
+
+(This comments pattern is a bit subjective, deciding what is *most information* and what is not
+is responsibility of the developer and/or its staff.)
+
+#### Special comments
+
+They are comment-based structures used to describe and highlight important things in the code; its
+structure is present below:
+
+```
+<comment-start> <keyword>: <information>
+```
+
+The keywords are:
+
+* `TODO` — describes what have to be done (a task to future) and, sometimes, how it can be done;
+* `FIXME` — describe problems in the code and, sometimes, how it can be fixed;
+* `XXX` — describe ricks related with temporary decisions that must be fixed/mitigated; and
+* `NOTE` — describe a decision, in the code, in a formal way.
 
