@@ -104,7 +104,9 @@
 # * luajit,
 # * lua5.1,
 # * openjdk-25-jdk,
-# * php-cli;
+# * php-cli,
+# * php-xml,
+# * libxml2-utils;
 #
 # Install utility libraries (no recommends packages; no suggests packages) with APT:
 # * libfuse2t64;
@@ -390,7 +392,9 @@ gdb
 luajit
 lua5.1
 openjdk-25-jdk
-php-cli'
+php-cli
+php-xml
+libxml2-utils'
 
 install_libraries='libfuse2t64'
 
