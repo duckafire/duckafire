@@ -15,19 +15,6 @@ then
 	exit 0
 fi
 
-#############
-# TODO
-if [ -t 0 ]; then
-    echo "Executado DIRETAMENTE (sem pipeline)."
-else
-    echo "Executado via PIPELINE (ou redirecionamento de entrada)."
-    # Exemplo: ler o conteúdo vindo do pipe
-    while read -r linha; do
-        echo "Recebido: $linha"
-    done
-fi
-#############
-
 if [ $# -lt 2 ]
 then
 	echo "$HELP_MSG" 1>&2
