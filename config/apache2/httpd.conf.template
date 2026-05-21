@@ -5,8 +5,7 @@
 # * SERVER_SIGNATURE;
 # * DOCUMENT_ROOT;
 # * LISTEN_PORT;
-# * LOG_LEVEL;
-# * LOGS_DIR; and
+# * LOG_LEVEL; and
 # * CGI_BIN_DIR.
 
 
@@ -19,7 +18,7 @@ DocumentRoot ${DOCUMENT_ROOT}
 Listen ${LISTEN_PORT}
 
 LogLevel ${LOG_LEVEL}
-ErrorLog ${LOGS_DIR}/errors.log
+#ErrorLog
 
 
 LoadModule access_compat_module           modules/mod_access_compat.so
