@@ -5,6 +5,8 @@
 # * SERVER_SIGNATURE;
 # * DOCUMENT_ROOT;
 # * LISTEN_PORT;
+# * USER_NAME;
+# * USER_GROUP;
 # * LOG_LEVEL; and
 # * CGI_BIN_DIR.
 
@@ -53,8 +55,8 @@ LoadModule version_module                 modules/mod_version.so
 
 
 <IfModule unixd_module>
-	User apache-php
-	Group apache-php
+	User ${USER_NAME}
+	Group ${USER_GROUP}
 </IfModule>
 
 <IfModule dir_module>
