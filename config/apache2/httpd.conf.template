@@ -1,5 +1,6 @@
 # (It includes PHP Module 8.3.)
 
+# * SERVER_NAME;
 # * SERVER_ROOT;
 # * SERVER_TOKENS;
 # * SERVER_SIGNATURE;
@@ -11,6 +12,7 @@
 # * CGI_BIN_DIR.
 
 
+ServerName ${SERVER_NAME}
 ServerRoot ${SERVER_ROOT}
 ServerTokens ${SERVER_TOKENS}
 ServerSignature ${SERVER_SIGNATURE}
