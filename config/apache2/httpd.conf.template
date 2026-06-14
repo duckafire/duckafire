@@ -96,22 +96,22 @@ LoadModule version_module                 modules/mod_version.so
 </IfModule>
 
 
-<IfModule mod_authz_core>
+<IfModule authz_core_module>
 	<Directory />
 		AllowOverride None
-		Require All denied
+		Require all denied
 	</Directory>
 
 	<Directory ${DOCUMENT_ROOT}>
-		AllowOverride All
-		Require All granted
+		AllowOverride all
+		Require all granted
 	</Directory>
 </IfModule>
 
 <Directory ${CGI_BIN_DIR}>
-	<IfModule mod_authz_core>
+	<IfModule authz_core_module>
 		AllowOverride None
-		Require All granted
+		Require all granted
 	</IfModule>
 
 	Options None
