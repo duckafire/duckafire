@@ -8,6 +8,8 @@
 # * LISTEN_PORT;
 # * USER_NAME;
 # * USER_GROUP;
+# * LOGS_OUT_FILE;
+# * LOGS_ERR_FILE;
 # * LOG_LEVEL; and
 # * CGI_BIN_DIR.
 
@@ -22,7 +24,7 @@ DocumentRoot ${DOCUMENT_ROOT}
 Listen ${LISTEN_PORT}
 
 LogLevel ${LOG_LEVEL}
-#ErrorLog
+ErrorLog ${LOGS_ERR_FILE}
 
 
 LoadModule access_compat_module           modules/mod_access_compat.so
@@ -69,16 +71,14 @@ LoadModule version_module                 modules/mod_version.so
 	# https://httpd.apache.org/docs/2.4/mod/mod_logio.html
 	<IfModule logio_module>
 		LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %I %O" combinedio
-		CustomLog ${LOGS_DIR}/combinedio.log combinedio
+		CustomLog ${LOGS_OUT_FILE} combinedio
 	</IfModule>
 
-	# https://httpd.apache.org/docs/2.4/logs.html#common
-	LogFormat "%h %l %u %t \"%r\" %>s %b" common
-	CustomLog ${LOGS_DIR}/common.log common
-
-	# https://httpd.apache.org/docs/2.4/logs.html#combined
-	LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined
-	CustomLog ${LOGS_DIR}/combined.log combined
+	<IfModule !logio_module>
+		# https://httpd.apache.org/docs/2.4/logs.html#combined
+		LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined
+		CustomLog ${LOGS_OUT_FILE} combined
+	</IfModule>
 </IfModule>
 
 <IfModule headers_module>
@@ -113,6 +113,7 @@ LoadModule version_module                 modules/mod_version.so
 		AllowOverride None
 		Require All granted
 	</IfModule>
+
 	Options None
 </Directory>
 
