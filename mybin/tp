@@ -45,7 +45,7 @@ do
 	key="${pair%%=*}"
 	value="${pair#*=}"
 
-	expression="${expression}s/\\\${$key}/$value/;"
+	expression="${expression}s/\\\${$key}/$value/g;"
 done
 
 sed "$expression" "$INPUT_FILE"
